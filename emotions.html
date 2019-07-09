@@ -51,6 +51,7 @@
                         var p = $("<p>").text("Rating: " + results[e].rating);
                         var emotionImage = $("<img>");
                         emotionImage.attr("src", results[e].images.fixed_height.url);
+                        emotionImage.addClass("still");
                         topicsDiv.append(p);
                         topicsDiv.prepend(emotionImage);
 
@@ -61,6 +62,18 @@
 
                 })
 
+        })
+        // adding data state
+        $(".gif").on("click", function () {
+            var state = $(this).attr("data-state");
+            if (state === "still") {
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            }
+            else {
+                $(this).attr("src", $(this).attr("data-still"));
+                $(this).attr("data-state", "still");
+            }
         })
 
     </script>
