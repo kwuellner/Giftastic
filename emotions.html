@@ -18,7 +18,7 @@
     <button data-emotion="trust">Trust</button>
     <button data-emotion="disgust">Disgust</button>
     <button data-emotion="horror">Horror</button>
-    <button data-emotion="nastalgia">Nastalgia</button>
+    <button data-emotion="nostalgia">Nostalgia</button>
 
     <div id="gifs-appear-here"></div>
 
@@ -30,7 +30,7 @@
             var topics = $(this).attr("data-emotion");
 
             //queryURL plus emotion name
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=cgXkxy9BxdP3hRIxDjK5XO4U3loCajUY&limit=10";
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=cgXkxy9BxdP3hRIxDjK5XO4U3loCajUY&limit=10";
 
             // creating AJAX request and using/storing the data
             $.ajax({
@@ -43,6 +43,21 @@
                     console.log(response);
                     var results = response.data;
 
+                    // creating loop for results
+                    for (var e = 0; e < results.length; e++) {
+                        var topicsDiv = $("<div>");
+
+                        // creating rating for results, image tag, and appending them
+                        var p = $("<p>").text("Rating: " + results[e].rating);
+                        var emotionImage = $("<img>");
+                        emotionImage.attr("src", results[e].images.fixed_height.url);
+                        topicsDiv.append(p);
+                        topicsDiv.prepend(emotionImage);
+
+                        // prepending topicsDiv to page
+                        $("#gifs-appear-here").prepend(topicsDiv);
+
+                    }
 
                 })
 
