@@ -29,7 +29,39 @@ button:hover{
     background-color: rgba(185, 180, 180, 0.096);
 }
 
+#new-emotion {
+    margin-top: 50px;
+    float: right;
+    background-color: red;
+    border-radius: 12px;
+    box-sizing: border-box;
+    height: 250px;
+    width: 20%;
+    text-align: center;
+}
+
+#emo-input {
+    margin-top: 10px;
+}
+
+#select-emo {
+    background-color: black;
+    color: red;
+    border-radius: 4px;
+    margin: 15px;
+    box-sizing: content-box;
+}
+
+#select-emo:hover {
+    background-color: red;
+    color: black;
+}
+
+#emo-form {
+    margin-top: 10px;
+}
+
 #gifs-appear-here {
-   
-   
+ 
+   image-orientation: 0deg;
 }

@@ -6,85 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Emotions Gifs</title>
-    <link rel="stylesheet" type="text/css" href="assests/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assests/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
     <div id="header" class="container">
-        <!-- <span> -->
+
         <h1>Emotion Search</h1>
-        <!-- </span> -->
+
     </div>
 
     <!-- buttons go here -->
     <div class="buttons">
-        <button data-emotion="laughter">Laughter</button>
-        <button data-emotion="loathe">Loathe</button>
-        <button data-emotion="joy">Joyful</button>
-        <button data-emotion="distraught">Distraught</button>
-        <button data-emotion="surprise">Surprise</button>
-        <button data-emotion="trust">Trust</button>
-        <button data-emotion="disgust">Disgust</button>
-        <button data-emotion="horror">Horror</button>
-        <button data-emotion="nostalgia">Nostalgia</button>
+
+        <div id="emoButton"></div>
     </div>
 
-    <div id="gifs-appear-here"></div>
+    <!-- search bar -->
+    <div id="new-emotion">
+        <form id="emo-form">
+            <label for="emo-input">Add Your Own Emotion</label>
+            <input type="text" id="emo-input">
+            <br>
+            <button class="btn btn-light" type="submit" id="select-emo">Add!</button>
+            <!-- <div id="newButtons"></div> -->
+        </form>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
 
-        // adding click event to all buttons and storing data for properties
-        $("button").on("click", function () {
-            var topics = $(this).attr("data-emotion");
+    <!-- gifs here -->
+    <div class="container">
+        <div class="row">
+            <span>
+                <div id="gifsHere"></div>
+            </span>
+        </div>
+    </div>
 
-            //queryURL plus emotion name
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=cgXkxy9BxdP3hRIxDjK5XO4U3loCajUY&limit=10";
 
-            // creating AJAX request and using/storing the data
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            })
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="assets/javascript/giphy.js"></script>
 
-                .then(function (response) {
-                    console.log(queryURL);
-                    console.log(response);
-                    var results = response.data;
-
-                    // creating loop for results
-                    for (var e = 0; e < results.length; e++) {
-                        var topicsDiv = $("<div>");
-
-                        // creating rating for results, image tag, and appending them
-                        var p = $("<p>").text("Rating: " + results[e].rating);
-                        var emotionImage = $("<img>");
-                        emotionImage.attr("src", results[e].images.fixed_height.url);
-                        emotionImage.addClass("still");
-                        topicsDiv.append(p);
-                        topicsDiv.prepend(emotionImage);
-
-                        // prepending topicsDiv to page
-                        $("#gifs-appear-here").prepend(topicsDiv);
-
-                    }
-
-                })
-
-        })
-        // adding data state
-        $(".gif").on("click", function () {
-            var state = $(this).attr("data-state");
-            if (state === "still") {
-                $(this).attr("src", $(this).attr("data-animate"));
-                $(this).attr("data-state", "animate");
-            }
-            else {
-                $(this).attr("src", $(this).attr("data-still"));
-                $(this).attr("data-state", "still");
-            }
-        })
 
     </script>
 </body>
