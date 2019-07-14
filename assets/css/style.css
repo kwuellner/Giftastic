@@ -1,5 +1,6 @@
 body {
     background-color: rgb(185, 181, 181);
+    background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
 }
 
 h1 {
@@ -17,8 +18,9 @@ h1 {
 button {
     background-color: black;
     color: red;
+    cursor: pointer;
     font-size: 25px;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 10px;
     margin: 10px 0 25px 10px;
     box-shadow: 0 8px 16px 0 rgba(248, 3, 3, 0.692), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -26,13 +28,19 @@ button {
 }
 
 button:hover{
-    background-color: rgba(185, 180, 180, 0.096);
+    background-color: rgba(92, 88, 88, 0.562);
+    color: rgb(71, 69, 69);
+}
+
+p {
+    margin-left: 10px;
 }
 
 #new-emotion {
-    margin-top: 50px;
+    margin: 50px 125px 0 0;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
     float: right;
-    background-color: red;
+
     border-radius: 12px;
     box-sizing: border-box;
     height: 250px;
@@ -42,18 +50,22 @@ button:hover{
 
 #emo-input {
     margin-top: 10px;
+    caret-color: red;
 }
 
 #select-emo {
     background-color: black;
+    opacity: .7;
     color: red;
+    cursor: pointer;
     border-radius: 4px;
-    margin: 15px;
+    margin: 15px ;
     box-sizing: content-box;
 }
 
 #select-emo:hover {
-    background-color: red;
+    background-image: linear-gradient(to left, grey, rgba(255,0,0,1));
+    opacity: .7;
     color: black;
 }
 
@@ -61,7 +73,14 @@ button:hover{
     margin-top: 10px;
 }
 
-#gifs-appear-here {
- 
-   image-orientation: 0deg;
+img {
+    cursor: pointer;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+  }
+
+#gifsHere {
+    margin-left:200px;
 }
+
